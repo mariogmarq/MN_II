@@ -9,7 +9,7 @@ function biseccion(a::Number, b::Number, f::Function, ε::AbstractFloat = 10e-6,
     fa = f(a)
     i = 0
 
-    if fa*f(b) > 0
+    if fa * f(b) > 0
         throw(DomainError((a, b), "f(a) and f(b) have the same sign"))
     end
 
@@ -25,7 +25,7 @@ function biseccion(a::Number, b::Number, f::Function, ε::AbstractFloat = 10e-6,
         if abs(yn) < ε
             return (xn, xn)
 
-        elseif yn*fa > 0
+        elseif yn * fa > 0
             a = xn
             fa = yn
         else
@@ -36,7 +36,10 @@ function biseccion(a::Number, b::Number, f::Function, ε::AbstractFloat = 10e-6,
     (a, b)
 end
 
-a = 0
-b = 5.0
-f(x) = x^2 - 5
-print(biseccion(a, b, f))
+
+function ejemplo()
+    a = 0
+    b = 5.0
+    f(x) = x^2 - 5
+    print(biseccion(a, b, f))
+end
